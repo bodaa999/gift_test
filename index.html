@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            font-family: 'Dancing Script', cursive;
+            color: pink;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .question {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            animation: wave 2s infinite;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Dancing Script', cursive;
+            transition: transform 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-yes {
+            background-color: pink;
+            color: black;
+        }
+
+        .btn-no {
+            background-color: pink;
+            color: black;
+        }
+
+        .birthday-message {
+            font-size: 2em;
+            line-height: 1.6;
+            animation: wave 2s infinite;
+        }
+
+        .birthday-image {
+            max-width: 400px;
+            margin: 20px auto;
+            border: 10px solid pink;
+            border-radius: 10px;
+        }
+
+        .sad-message {
+            font-size: 3em;
+            animation: wave 2s infinite;
+        }
+
+        .try-again {
+            background-color: white;
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="questionPage">
+        <div class="question">Are you sure you want to continue?</div>
+        <div class="buttons">
+            <button class="btn btn-yes" onclick="showBirthdayMessage()">Yes ❤️</button>
+            <button class="btn btn-no" onclick="showSadMessage()">No 😢</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="birthdayPage">
+        <div class="birthday-message">
+            Happy birthday Manona my lady princess i really love, hope you enjoy your day ❤️❤️❤️ sweet 19 ❤️
+        </div>
+        <img src="gift_photo.png" alt="Birthday Gift" class="birthday-image">
+    </div>
+
+    <div class="container hidden" id="sadPage">
+        <div class="sad-message">I'm sad 😢😢😢</div>
+        <button class="try-again" onclick="goBack()">Try Again</button>
+    </div>
+
+    <script>
+        function showBirthdayMessage() {
+            document.getElementById('questionPage').classList.add('hidden');
+            document.getElementById('birthdayPage').classList.remove('hidden');
+            document.getElementById('sadPage').classList.add('hidden');
+        }
+
+        function showSadMessage() {
+            document.getElementById('questionPage').classList.add('hidden');
+            document.getElementById('birthdayPage').classList.add('hidden');
+            document.getElementById('sadPage').classList.remove('hidden');
+        }
+
+        function goBack() {
+            document.getElementById('questionPage').classList.remove('hidden');
+            document.getElementById('birthdayPage').classList.add('hidden');
+            document.getElementById('sadPage').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
